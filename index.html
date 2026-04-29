@@ -1,81 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Masika's Birthday 🎉</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masika Birthday 🎬</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 </head>
+
 <body>
 
-<!-- CINEMATIC INTRO -->
+<!-- INTRO -->
 <div id="intro">
-    <h1>🎬 Welcome to Masika's Birthday Experience 🎉</h1>
+    <h1 class="intro-text">Masika</h1>
 </div>
 
-<!-- FIREWORKS CANVAS -->
-<canvas id="confetti"></canvas>
-
-<div class="container">
-
-    <h1 class="glow">🎉 Masika's Birthday 🎉</h1>
-    <h2>May 9</h2>
-
+<!-- HERO -->
+<section id="hero">
+    <h1>🎉 Happy Birthday 🎉</h1>
     <p id="countdown"></p>
+    <button onclick="startExperience()">Enter</button>
+</section>
 
-    <button onclick="playMusic(); showSurprise()">
-        Click for Surprise 🎁
-    </button>
+<!-- EXPERIENCE -->
+<section id="experience" class="hidden">
 
-    <!-- SURPRISE SECTION -->
-    <div id="surprise" class="hidden">
+    <canvas id="fireworks"></canvas>
 
-        <h2>🎉 It's My Moment! 🎉</h2>
+    <div class="glass">
 
-        <p>
-            Hey! I'm Masika 👑<br>
-            Welcome to my birthday experience 🔥<br><br>
-            Grateful for life, growth, and everything ahead 💙
-        </p>
+        <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+        <h2>✨ Celebration ✨</h2>
 
         <!-- SLIDESHOW -->
         <div class="slideshow">
             <img id="slide" src="img1.jpg">
         </div>
 
-    </div>
+        <!-- MESSAGE INPUT ONLY -->
+        <div class="messages">
+            <h3>💬 Send a Wish</h3>
 
-    <!-- MESSAGES -->
-    <div class="messages">
-        <h2>💬 Birthday Wishes</h2>
+            <input id="nameInput" placeholder="Your name">
+            <input id="msgInput" placeholder="Write your message">
 
-        <div id="messageList"></div>
-
-        <input type="text" id="nameInput" placeholder="Your name">
-        <input type="text" id="msgInput" placeholder="Write a wish">
-        <button onclick="addMessage()">Send Wish 🎉</button>
-    </div>
-
-    <!-- GAME -->
-    <div class="game">
-        <h2>🎮 Click Game</h2>
-        <button onclick="gameClick()">Click Me!</button>
-        <p id="score">Score: 0</p>
-    </div>
-
-    <!-- ADMIN -->
-    <div class="admin">
-        <h2>🔐 Admin Dashboard</h2>
-        <button onclick="toggleAdmin()">Toggle Admin</button>
-
-        <div id="adminPanel" class="hidden">
-            <h3>Messages</h3>
-            <div id="adminMessages"></div>
+            <button onclick="addMessage()">Send 🎉</button>
         </div>
+
     </div>
 
-</div>
+</section>
 
-<!-- MUSIC -->
 <audio id="music" loop>
     <source src="music.mp3">
 </audio>
